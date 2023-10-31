@@ -1,0 +1,10 @@
+<app-loader [activarLoaderNavegacionRutas]="true"></app-loader>
+<app-header-imss-publico></app-header-imss-publico>
+
+<router-outlet></router-outlet>
+
+<p-toast position="top-center" class="pb-2 pt-2">
+  <ng-template let-message pTemplate="message">
+    <app-alerta [mensaje]="message.detail"></app-alerta>
+  </ng-template>
+</p-toast>
