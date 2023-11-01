@@ -11,7 +11,7 @@ import { PublicoComponent } from './publico.component';
   ],
   imports: [
     CommonModule,
-    PublicoRoutingModule
+    PublicoRoutingModule,
   ]
 })
 export class PublicoModule { }

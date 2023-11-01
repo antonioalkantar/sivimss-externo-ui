@@ -9,20 +9,29 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'inicio-sesion',
+        redirectTo: 'autenticacion',
         pathMatch: 'full',
       },
       {
-        path: 'inicio-sesion',
-        loadChildren: () => import('./pages/inicio-sesion/inicio-sesion.module').then(m => m.InicioSesionModule)
-      }
-    ]
+        path: 'autenticacion',
+        loadChildren: () =>
+          import('./pages/autenticacion/autenticacion.module').then(
+            (m) => m.AutenticacionModule
+          ),
+      },
+      {
+        path: 'registro-en-linea',
+        loadChildren: () =>
+          import('./pages/registro/registro.module').then(
+            (m) => m.RegistroModule
+          ),
+      },
+    ],
   },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PublicoRoutingModule { }
+export class PublicoRoutingModule {}
