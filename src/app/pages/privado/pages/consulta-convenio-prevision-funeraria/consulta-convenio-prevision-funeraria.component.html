@@ -1,0 +1,44 @@
+<div class="container-sivimss px-5 registro-en-linea my-5">
+    <app-titulo-principal titulo="CONSULTAR MI CONVENIO DE PREVISIÓN FUNERARIA">
+        <app-btn-regresar routerLink="../consultar-mis-servicios-en-linea"></app-btn-regresar>
+    </app-titulo-principal>
+
+    <p-table styleClass="mt-5 mb-8" [value]="convenios" [paginator]="convenios.length > 0"
+        [rows]="cantElementosPorPagina" [totalRecords]="totalElementos" [pageLinks]="3" [(first)]="numPaginaActual"
+        [resizableColumns]="true" [columnResizeMode]="'expand'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th scope="col">Folio</th>
+                <th scope="col">Nombre del afiliado</th>
+                <th scope="col">CURP</th>
+                <th scope="col" style="width: 40px; border-left: 1px solid #b0b0b0;"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-convenio>
+            <tr>
+                <td>{{convenio.folio}}</td>
+                <td>{{convenio.nombreAfiliado}}</td>
+                <td>{{convenio.curp}}</td>
+                <td style="border-left: 1px solid #b0b0b0;">
+                    <div class="contenedor-celda-iconos">
+                        <a>
+                            <i class="pi pi-eye"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <th colspan="7" class="p-2 text-center font-bold text-xl" id="consulta_ods_sin_resultados">
+                    No se encontró información relacionada a tu búsqueda
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <div class="paginator-template">
+                <span class="total-elements">{{convenios.length}} de {{totalElementos}}</span>
+            </div>
+        </ng-template>
+    </p-table>
+</div>

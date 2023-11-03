@@ -1,5 +1,5 @@
 <div class="inicio-sesion">
-  <form [formGroup]="form" (ngSubmit)="acceder()">
+  <form [formGroup]="form">
     <h1>CONSULTAR MIS SERVICIOS EN LÍNEA</h1>
     <hr>
     <h2>Inicio de sesión</h2>
@@ -32,7 +32,8 @@
     </div>
     <div class="flex justify-content-end align-items-center mt-3 mb-4 flex-wrap">
       <button class="btn btn-default btn-lg" routerLink="../../registro-en-linea">Registrarse</button>
-      <button class="btn btn-primary btn-lg ml-5" [disabled]="form.invalid">Acceder</button>
+      <button class="btn btn-primary btn-lg ml-5" type="button"
+        routerLink="../../../privado/consultar-mis-servicios-en-linea">Acceder</button>
     </div>
   </form>
 </div>
