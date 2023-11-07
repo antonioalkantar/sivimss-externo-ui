@@ -38,6 +38,13 @@ const routes: Routes = [
             './pages/consulta-plan-servicios-funerarios-pago-anticipado/consulta-plan-servicios-funerarios-pago-anticipado.module'
           ).then((m) => m.ConsultaPlanServiciosFunerariosPagoAnticipadoModule),
       },
+      {
+        path: 'consultar-el-estatus-de-mi-orden-de-servicio',
+        loadChildren: () =>
+          import(
+            './pages/consulta-estatus-orden-servicio/consulta-estatus-orden-servicio.module'
+          ).then((m) => m.ConsultaEstatusOrdenServicioModule),
+      },
     ],
   },
 ];
