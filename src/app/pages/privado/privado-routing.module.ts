@@ -45,6 +45,13 @@ const routes: Routes = [
             './pages/consulta-estatus-orden-servicio/consulta-estatus-orden-servicio.module'
           ).then((m) => m.ConsultaEstatusOrdenServicioModule),
       },
+      {
+        path: 'contratar-convenio-de-prevision-funeraria',
+        loadChildren: () =>
+          import(
+            './pages/contratar-convenio-prevision-funeraria/contratar-convenio-prevision-funeraria.module'
+          ).then((m) => m.ContratarConvenioPrevisionFunerariaModule),
+      },
     ],
   },
 ];
