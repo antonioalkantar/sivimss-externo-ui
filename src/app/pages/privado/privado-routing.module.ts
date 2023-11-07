@@ -31,6 +31,13 @@ const routes: Routes = [
             './pages/consulta-convenio-prevision-funeraria/consulta-convenio-prevision-funeraria.module'
           ).then((m) => m.ConsultaConvenioPrevisionFunerariaModule),
       },
+      {
+        path: 'consultar-plan-de-servicios-funerarios-pago-anticipado',
+        loadChildren: () =>
+          import(
+            './pages/consulta-plan-servicios-funerarios-pago-anticipado/consulta-plan-servicios-funerarios-pago-anticipado.module'
+          ).then((m) => m.ConsultaPlanServiciosFunerariosPagoAnticipadoModule),
+      },
     ],
   },
 ];

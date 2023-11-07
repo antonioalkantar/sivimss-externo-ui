@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
 import { DIEZ_ELEMENTOS_POR_PAGINA } from 'src/app/utils/constantes';
+import { ModalDetalleBeneficiariosComponent } from './pages/mi-convenio-prevision-funeraria/components/modal-detalle-beneficiarios/modal-detalle-beneficiarios.component';
 
 @Component({
   selector: 'app-consulta-convenio-prevision-funeraria',
@@ -9,7 +11,6 @@ import { DIEZ_ELEMENTOS_POR_PAGINA } from 'src/app/utils/constantes';
 export class ConsultaConvenioPrevisionFunerariaComponent implements OnInit {
   numPaginaActual: number = 0;
   cantElementosPorPagina: number = DIEZ_ELEMENTOS_POR_PAGINA;
-
 
   convenios: any[] = [
     {
@@ -87,8 +88,9 @@ export class ConsultaConvenioPrevisionFunerariaComponent implements OnInit {
   ];
 
   totalElementos: number = this.convenios.length;
-
-  constructor() {}
+  mostrarModalFaltaConvenio: boolean = false;
+  mostrarModalNoPuedeRenovar: boolean = false;
+  mostrarModalNoSeEncuentraEnPeriodo: boolean = false;
 
   ngOnInit(): void {}
 }

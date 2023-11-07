@@ -7,16 +7,28 @@ import { TituloPrincipalModule } from 'src/app/shared/titulo-principal/titulo-pr
 import { BtnRegresarModule } from 'src/app/shared/btn-regresar/btn-regresar.module';
 import { TableModule } from 'primeng/table';
 import { CeldaStickyModule } from 'src/app/shared/celda-sticky/celda-sticky.module';
+import { ModalDetalleBeneficiariosComponent } from './pages/mi-convenio-prevision-funeraria/components/modal-detalle-beneficiarios/modal-detalle-beneficiarios.component';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ModalRegistrarNuevoBeneficiarioComponent } from './pages/mi-convenio-prevision-funeraria/components/modal-registrar-nuevo-beneficiario/modal-registrar-nuevo-beneficiario.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { ModalEditarBeneficiarioComponent } from './pages/mi-convenio-prevision-funeraria/components/modal-editar-beneficiario/modal-editar-beneficiario.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [ConsultaConvenioPrevisionFunerariaComponent],
   imports: [
     CommonModule,
     ConsultaConvenioPrevisionFunerariaRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     TituloPrincipalModule,
     BtnRegresarModule,
     TableModule,
-    CeldaStickyModule
+    CeldaStickyModule,
+    DialogModule,
   ],
+  providers: [DialogService],
 })
 export class ConsultaConvenioPrevisionFunerariaModule {}
