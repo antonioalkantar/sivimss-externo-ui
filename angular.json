@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "leaflet"
+            ],
             "outputPath": "dist/sivimss-externo-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -32,6 +35,9 @@
               "node_modules/primeng/resources/primeng.css",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeflex/primeflex.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css",
+              "src/assets/scss/custom-leaflet.scss",
               "src/assets/icons/iconos-sivimss.css",
               "src/assets/icons/iconos-transportes.css",
               "src/styles.scss"

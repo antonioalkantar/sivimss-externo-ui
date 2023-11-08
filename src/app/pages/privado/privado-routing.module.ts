@@ -49,8 +49,8 @@ const routes: Routes = [
         path: 'contratar-convenio-de-prevision-funeraria',
         loadChildren: () =>
           import(
-            './pages/contratar-convenio-prevision-funeraria/contratar-convenio-prevision-funeraria.module'
-          ).then((m) => m.ContratarConvenioPrevisionFunerariaModule),
+            './pages/mapa-contratar-convenio-prevision-funeraria/mapa-contratar-convenio-prevision-funeraria.module'
+          ).then((m) => m.MapaContratarConvenioPrevisionFunerariaModule),
       },
     ],
   },
