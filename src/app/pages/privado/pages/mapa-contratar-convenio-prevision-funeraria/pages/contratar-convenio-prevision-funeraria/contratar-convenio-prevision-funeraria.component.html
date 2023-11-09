@@ -180,5 +180,285 @@
 
       </ng-container>
     </div>
+    <div class="border-panel mb-5">
+      <h2 class="subtitulo-base">Beneficiarios</h2>
+      <p-table styleClass="mt-5 mb-8" [value]="beneficiarios" [resizableColumns]="true" [columnResizeMode]="'expand'">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 4rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th scope="col">Velatorio</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Primer apellido</th>
+            <th scope="col">Segundo apellido</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Parentesco</th>
+            <th scope="col">CURP</th>
+            <th scope="col">RFC</th>
+            <th scope="col">Acta nacimiento</th>
+            <th scope="col">Correo electrónico</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col" style="width: 40px; border-left: 1px solid #b0b0b0;"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-convenio>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="convenio.id"></p-tableCheckbox>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="border-left: 1px solid #b0b0b0;">
+              <div class="contenedor-celda-iconos">
+                <a (click)="abrirModalDetalleBeneficiarios($event)">
+                  <i class="pi pi-ellipsis-v"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="border-panel mb-5">
+      <h2 class="subtitulo-base">Paquetes</h2>
+      <ng-container formGroupName="paquetes">
+        <div class="paquetes">
+          <div class="paquete">
+            <div class="paquete-titulo">
+              <p-checkbox formControlName="paqueteEconomico" [binary]="true"></p-checkbox>
+              <span>1. Paquete Económico</span>
+            </div>
+            <div>
+              <ul>
+                <li>Recolección y traslado del cuerpo (hasta 100 km en la misma entidad federativa)
+                </li>
+                <li>
+                  Capilla en velatorio o en domicilio (hasta 24 horas)
+                </li>
+                <li>
+                  Apoyo para trámites
+                </li>
+                <li>
+                  Arreglo estético del cuerpo y embalsamamiento (en caso de ser necesario)
+                </li>
+                <li>
+                  No se incluye ataúd.
+                </li>
+              </ul>
+              <div class="iconos">
+                <img src="assets/images/sivimss-externos/material-symbols_candle.svg" alt="">
+                <img src="assets/images/sivimss-externos/material-symbols_candle-2.svg" alt="">
+                <img src="assets/images/sivimss-externos/material-symbols_candle-2.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="paquete">
+            <div class="paquete-titulo">
+              <p-checkbox formControlName="paqueteBasico" [binary]="true"></p-checkbox>
+              <span>1. Paquete Básico</span>
+            </div>
+            <div>
+              <ul>
+                <li>Recolección y traslado del cuerpo (hasta 100 km en la misma entidad federativa)
+                </li>
+                <li>
+                  Capilla en velatorio o en domicilio (hasta 24 horas)
+                </li>
+                <li>
+                  Apoyo para trámites
+                </li>
+                <li>
+                  Arreglo estético del cuerpo y embalsamamiento (en caso de ser necesario)
+                </li>
+                <li>
+                  Ataúd nuevo Básico
+                  <ul>
+                    <li>De acuerdo con la normatividad vigente que aplique para los Velatorios IMSS para el otorgamiento
+                      de servicios funerarios.</li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="iconos">
+                <img src="assets/images/sivimss-externos/material-symbols_candle.svg" alt="">
+                <img src="assets/images/sivimss-externos/material-symbols_candle.svg" alt="">
+                <img src="assets/images/sivimss-externos/material-symbols_candle-2.svg" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="paquete">
+            <div class="paquete-titulo">
+              <p-checkbox formControlName="paqueteCremacion" [binary]="true"></p-checkbox>
+              <span>1. Paquete con Cremación</span>
+            </div>
+            <div>
+              <ul>
+                <li>Recolección y traslado del cuerpo (hasta 100 km en la misma entidad federativa)
+                </li>
+                <li>
+                  Capilla en velatorio o en domicilio (hasta 24 horas)
+                </li>
+                <li>
+                  Apoyo para trámites
+                </li>
+                <li>
+                  Arreglo estético del cuerpo y embalsamamiento (en caso de ser necesario)
+                </li>
+                <li>
+                  Ataúd nuevo Básico
+                  <ul>
+                    <li>De acuerdo con la normatividad vigente que aplique para los Velatorios IMSS para el otorgamiento
+                      de servicios funerarios.</li>
+                    <li>
+                      La cremación únicamente aplica para los velatorios indicados en el “ANEXO C”.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  En dicho paquete no se incluye la urna para cenizas.
+                </li>
+              </ul>
+              <div class="iconos">
+                <img src="assets/images/sivimss-externos/material-symbols_candle.svg" alt="">
+                <img src="assets/images/sivimss-externos/material-symbols_candle.svg" alt="">
+                <img src="assets/images/sivimss-externos/material-symbols_candle.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="border-panel mb-5">
+      <div class="row">
+        <div class="col-md-6">
+          <label class="control-label">¿El servicio fue gestionado por un promotor? <span class="req">*</span></label>
+          <div class="flex">
+            <div class="flex align-items-center mx-2">
+              <p-radioButton [inputId]="'promotorSi'" name="gestionadoPorPromotor" [value]="true"
+                formControlName="gestionadoPorPromotor"></p-radioButton>
+              <label class="control-label m-0 mx-3" [for]="'promotorSi'">Sí</label>
+            </div>
+            <div class="flex align-items-center mx-2">
+              <p-radioButton [inputId]="'promotorNo'" name="gestionadoPorPromotor" [value]="false"
+                formControlName="gestionadoPorPromotor"></p-radioButton>
+              <label class="control-label m-0 mx-3" [for]="'promotorNo'">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label" for="promotor">Promotor:</label>
+          <p-dropdown id="promotor" class="form-control" formControlName="promotor" placeholder="Selecciona promotor"
+            [options]="dummyDropdown" [filter]="true" filterBy="label"></p-dropdown>
+        </div>
+      </div>
+    </div>
+    <div class="border-panel mb-5">
+      <div class="row mb-5">
+        <div class="col-md-2 flex flex-column">
+          <span class="etiqueta-base font-bold">Folio único del convenio</span>
+          <span class="texto-base font-normal">DOC-CRE-6-2</span>
+        </div>
+        <div class="col-md-2 flex flex-column">
+          <span class="etiqueta-base font-bold">Nombre completo</span>
+          <span class="texto-base font-normal">Nombre Apellido Apellido</span>
+        </div>
+        <div class="col-md-2 flex flex-column">
+          <span class="etiqueta-base font-bold">Delegación</span>
+          <span class="texto-base font-normal">Nombre de la delegación</span>
+        </div>
+        <div class="col-md-2 flex flex-column">
+          <span class="etiqueta-base font-bold">Velatorio</span>
+          <span class="texto-base font-normal">Nombre del velatorio</span>
+        </div>
+        <div class="col-md-2 flex flex-column">
+          <span class="etiqueta-base font-bold">Fecha</span>
+          <span class="texto-base font-normal">00-00-0000</span>
+        </div>
+      </div>
+      <div class="row mb-8">
+        <div class="col-md-2">
+          <label class="control-label" for="archivoXml">INE afiliado:</label>
+          <div (click)="handleClick('archivoXml', 'xml')" class="file-container">
+            <input class="hidden" type="file" id="upload-file-xml" name="upload-file-xml" accept=".xml"
+              ngf-max-size="2MB" (change)="addAttachment($event)">
+            <input id="archivoXml" class="form-control">
+            <img src="assets/images/imagen-icono-file-upload.svg" class="ms" alt="icono ver">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label class="control-label" for="archivoXml">Copia CURP:</label>
+          <div (click)="handleClick('archivoXml', 'xml')" class="file-container">
+            <input class="hidden" type="file" id="upload-file-xml" name="upload-file-xml" accept=".xml"
+              ngf-max-size="2MB" (change)="addAttachment($event)">
+            <input id="archivoXml" class="form-control">
+            <img src="assets/images/imagen-icono-file-upload.svg" class="ms" alt="icono ver">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label class="control-label" for="archivoXml">Copia RFC:</label>
+          <div (click)="handleClick('archivoXml', 'xml')" class="file-container">
+            <input class="hidden" type="file" id="upload-file-xml" name="upload-file-xml" accept=".xml"
+              ngf-max-size="2MB" (change)="addAttachment($event)">
+            <input id="archivoXml" class="form-control">
+            <img src="assets/images/imagen-icono-file-upload.svg" class="ms" alt="icono ver">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label class="control-label" for="archivoXml">Acta de nacimiento beneficiario:</label>
+          <div (click)="handleClick('archivoXml', 'xml')" class="file-container">
+            <input class="hidden" type="file" id="upload-file-xml" name="upload-file-xml" accept=".xml"
+              ngf-max-size="2MB" (change)="addAttachment($event)">
+            <input id="archivoXml" class="form-control">
+            <img src="assets/images/imagen-icono-file-upload.svg" class="ms" alt="icono ver">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label class="control-label" for="archivoXml">INE Beneficiario:</label>
+          <div (click)="handleClick('archivoXml', 'xml')" class="file-container">
+            <input class="hidden" type="file" id="upload-file-xml" name="upload-file-xml" accept=".xml"
+              ngf-max-size="2MB" (change)="addAttachment($event)">
+            <input id="archivoXml" class="form-control">
+            <img src="assets/images/imagen-icono-file-upload.svg" class="ms" alt="icono ver">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul>
+            <li class="text-archivos">
+              Arrastrar y soltar los archivos en la sección "Cargar Archivos" o selecciona la opción “Agregar Archivo".
+            </li>
+            <li class="text-archivos">Subir archivos con formato PDF y/o imágenes: gif, jpeg y jpg. Si tienes dudas
+              puedes asistir a tu
+              Velatorio más cercano.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 mb-3">
+      <span class="texto-base font-normal">*Campos obligatorios</span>
+    </div>
+    <div class="row">
+      <div class="col-md-12 flex justify-content-end align-items-center">
+        <button class="btn btn-gold btn-md">Cancelar</button>
+        <button class="btn btn-primary btn-md ml-4">Guardar</button>
+      </div>
+    </div>
   </form>
 </div>

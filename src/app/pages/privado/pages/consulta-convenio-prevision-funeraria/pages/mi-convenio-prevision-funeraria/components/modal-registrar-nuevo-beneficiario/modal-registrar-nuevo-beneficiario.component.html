@@ -39,7 +39,7 @@
         </div>
         <div class="col-md-4">
             <label class="control-label" for="archivoXml">Acta de nacimiento:</label>
-            <div (click)="handleClick('archivoXml', 'xml')"><!--Adaptarlo a sus necesidades :) -->
+            <div (click)="handleClick('archivoXml', 'xml')">
                 <input class="hidden" type="file" id="upload-file-xml" name="upload-file-xml" accept=".xml"
                     ngf-max-size="2MB" (change)="addAttachment($event)">
                 <input id="archivoXml" class="form-control" formControlName="actaNacimiento" readonly>

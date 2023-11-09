@@ -4,10 +4,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-contratar-convenio-prevision-funeraria',
   templateUrl: './contratar-convenio-prevision-funeraria.component.html',
-  styleUrls: ['./contratar-convenio-prevision-funeraria.component.scss']
+  styleUrls: ['./contratar-convenio-prevision-funeraria.component.scss'],
 })
 export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
-
   form!: FormGroup;
 
   dummyDropdown: { label: string; value: number }[] = [
@@ -15,9 +14,54 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     { label: 'Opción 2', value: 2 },
   ];
 
-  fechaActual:Date = new Date();
+  fechaActual: Date = new Date();
 
-  constructor(private readonly formBuilder: FormBuilder) { }
+  beneficiarios: any[] = [
+    {
+      id: 1,
+      fecha: '',
+      nombre: '',
+      primerApellido: '',
+      segundoApellido: '',
+      edad: '',
+      parentesco: '',
+      curp: '',
+      rfc: '',
+      actaNacimiento: '',
+      correoElectronico: '',
+      telefono: '',
+    },
+    {
+      id: 2,
+      fecha: '',
+      nombre: '',
+      primerApellido: '',
+      segundoApellido: '',
+      edad: '',
+      parentesco: '',
+      curp: '',
+      rfc: '',
+      actaNacimiento: '',
+      correoElectronico: '',
+      telefono: '',
+    },
+    {
+      id: 3,
+      fecha: '',
+      nombre: '',
+      primerApellido: '',
+      segundoApellido: '',
+      edad: '',
+      parentesco: '',
+      curp: '',
+      rfc: '',
+      actaNacimiento: '',
+      correoElectronico: '',
+      telefono: '',
+    },
+  ];
+
+  constructor(private readonly formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.crearForm();
@@ -182,8 +226,86 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.nullValidator],
         ],
-      })
-    })
+      }),
+      paquetes: this.formBuilder.group({
+        paqueteEconomico: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.nullValidator],
+        ],
+        paqueteBasico: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.nullValidator],
+        ],
+        paqueteCremacion: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.nullValidator],
+        ],
+      }),
+      gestionadoPorPromotor: [
+        {
+          value: null,
+          disabled: false,
+        },
+        [Validators.nullValidator],
+      ],
+      promotor: [
+        {
+          value: null,
+          disabled: false,
+        },
+        [Validators.nullValidator],
+      ],
+    });
+  }
+
+  abrirModalDetalleBeneficiarios(event: any) {}
+
+  handleClick(controlName: string, formato: string) {
+    // let elements = document.getElementById(`upload-file-${formato}`);
+    // this.controlName = controlName;
+    // elements?.click();
+  }
+
+  addAttachment(fileInput: any) {
+    // const fileReaded = fileInput.target.files[0];
+    // if (this.controlName === 'archivoXml') {
+    //   this.importeFactura = null;
+    //   this.folioFiscal = null;
+    //   let reader = new FileReader();
+    //   reader.onload = () => {
+    //     let xml_content = reader.result ?? '';
+    //     if (typeof xml_content === 'string') {
+    //       let parser = new DOMParser();
+    //       let xmlDoc = parser.parseFromString(xml_content, 'text/xml');
+    //       let comprobante = xmlDoc.getElementsByTagName('cfdi:Comprobante')[0];
+    //       this.importeFactura = Number(comprobante.getAttribute('Total'));
+    //       let complemento = xmlDoc.getElementsByTagName('cfdi:Complemento')[0];
+    //       this.folioFiscal = complemento.getElementsByTagName('tfd:TimbreFiscalDigital')[0].getAttribute('UUID');
+    //       this.generarHojaConsignacionForm.get('folio')?.setValue(this.folioFiscal);
+    //       const formatter = new Intl.NumberFormat("en-US", {
+    //         style: 'currency',
+    //         currency: 'USD',
+    //         minimumFractionDigits: 2,
+    //       });
+    //       this.importeFacturaFormat = formatter.format(this.importeFactura);
+    //     }
+    //   }
+    //   if (fileReaded) reader.readAsText(fileReaded);
+    // }
+    // if (fileReaded) {
+    //   this.generarHojaConsignacionForm.get(this.controlName)?.setValue(fileReaded.name);
+    // } else {
+    //   this.generarHojaConsignacionForm.get(this.controlName)?.setValue(null);
+    // }
   }
 
   get datosPersonales() {
@@ -193,5 +315,4 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
   get domicilio() {
     return (this.form.controls['domicilio'] as FormGroup).controls;
   }
-
 }

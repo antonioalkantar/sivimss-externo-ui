@@ -8,6 +8,9 @@ import { BtnRegresarModule } from 'src/app/shared/btn-regresar/btn-regresar.modu
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [ContratarConvenioPrevisionFunerariaComponent],
@@ -20,7 +23,9 @@ import { DropdownModule } from 'primeng/dropdown';
     DropdownModule,
     TituloPrincipalModule,
     BtnRegresarModule,
-
+    TableModule,
+    CheckboxModule,
+    RadioButtonModule,
   ],
 })
-export class ContratarConvenioPrevisionFunerariaModule { }
+export class ContratarConvenioPrevisionFunerariaModule {}
