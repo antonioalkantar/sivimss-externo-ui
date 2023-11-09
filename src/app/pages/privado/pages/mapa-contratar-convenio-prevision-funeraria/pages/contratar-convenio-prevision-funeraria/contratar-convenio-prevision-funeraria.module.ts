@@ -11,9 +11,21 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { OverlayPanelOpcionesModule } from 'src/app/shared/overlay-panel-opciones/overlay-panel-opciones.module';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ModalRegistrarBeneficiarioComponent } from './components/modal-registrar-beneficiario/modal-registrar-beneficiario.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { ModalEditarBeneficiarioComponent } from './components/modal-editar-beneficiario/modal-editar-beneficiario.component';
+import { ModalDesactivarBeneficiarioComponent } from './components/modal-desactivar-beneficiario/modal-desactivar-beneficiario.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
-  declarations: [ContratarConvenioPrevisionFunerariaComponent],
+  declarations: [
+    ContratarConvenioPrevisionFunerariaComponent,
+    ModalRegistrarBeneficiarioComponent,
+    ModalEditarBeneficiarioComponent,
+    ModalDesactivarBeneficiarioComponent,
+  ],
   imports: [
     CommonModule,
     ContratarConvenioPrevisionFunerariaRoutingModule,
@@ -26,6 +38,10 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     TableModule,
     CheckboxModule,
     RadioButtonModule,
+    OverlayPanelOpcionesModule,
+    OverlayPanelModule,
+    DialogModule
   ],
+  providers: [DialogService],
 })
 export class ContratarConvenioPrevisionFunerariaModule {}

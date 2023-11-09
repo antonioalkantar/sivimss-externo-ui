@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { ModalRegistrarBeneficiarioComponent } from './components/modal-registrar-beneficiario/modal-registrar-beneficiario.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { ModalEditarBeneficiarioComponent } from './components/modal-editar-beneficiario/modal-editar-beneficiario.component';
 
 @Component({
   selector: 'app-contratar-convenio-prevision-funeraria',
@@ -15,6 +19,9 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
   ];
 
   fechaActual: Date = new Date();
+
+  @ViewChild(OverlayPanel)
+  overlayPanel!: OverlayPanel;
 
   beneficiarios: any[] = [
     {
@@ -61,7 +68,17 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     },
   ];
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  mostrarModalTipoArchivoIncorrecto: boolean = false;
+  mostrarModalConfirmacionInformacionCapturada: boolean = false;
+  mostrarModalValidacionRegistro: boolean = false;
+
+  TIPO_CONTRATACION_PERSONA: string = 'persona';
+  TIPO_CONTRATACION_GRUPO: string = 'grupo';
+
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly dialogService: DialogService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.crearForm();
@@ -69,6 +86,13 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
 
   crearForm(): FormGroup {
     return this.formBuilder.group({
+      tipoContratacion: [
+        {
+          value: this.TIPO_CONTRATACION_PERSONA,
+          disabled: false,
+        },
+        [Validators.nullValidator],
+      ],
       datosPersonales: this.formBuilder.group({
         matricula: [
           {
@@ -306,6 +330,50 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     // } else {
     //   this.generarHojaConsignacionForm.get(this.controlName)?.setValue(null);
     // }
+  }
+
+  abrirModalRegistroBeneficiario(event: MouseEvent): void {
+    event.stopPropagation();
+    const ref = this.dialogService.open(ModalRegistrarBeneficiarioComponent, {
+      header: 'Registrar beneficiario',
+      style: { maxWidth: '876px', width: '100%' },
+      data: {
+        dato1: null,
+      },
+    });
+    ref.onClose.subscribe((respuesta: any) => {});
+  }
+
+  abrirModalEditarBeneficiario(event: MouseEvent): void {
+    event.stopPropagation();
+    const ref = this.dialogService.open(ModalEditarBeneficiarioComponent, {
+      header: 'Editar beneficiario',
+      style: { maxWidth: '876px', width: '100%' },
+      data: {
+        dato1: null,
+      },
+    });
+    ref.onClose.subscribe((respuesta: any) => {});
+  }
+
+  abrirModalDesactivarBeneficiario(event: MouseEvent): void {
+    event.stopPropagation();
+    const ref = this.dialogService.open(ModalEditarBeneficiarioComponent, {
+      header: 'Desactivar beneficiario',
+      style: { maxWidth: '876px', width: '100%' },
+      data: {
+        dato1: null,
+      },
+    });
+    ref.onClose.subscribe((respuesta: any) => {});
+  }
+
+  abrirPanel(event: MouseEvent): void {
+    this.overlayPanel.toggle(event);
+  }
+
+  get f() {
+    return this.form.controls;
   }
 
   get datosPersonales() {

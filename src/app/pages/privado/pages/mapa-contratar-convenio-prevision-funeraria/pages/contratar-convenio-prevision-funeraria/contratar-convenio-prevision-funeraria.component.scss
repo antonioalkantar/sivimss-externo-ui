@@ -85,3 +85,9 @@
     font-size: 12px;
     color: #BFBFBF;
 }
+
+:host ::ng-deep .overlay-panel-opciones .overlay-panel-opcion{
+    text-align: center;
+    display: block;
+    color: #9D244A;
+}
