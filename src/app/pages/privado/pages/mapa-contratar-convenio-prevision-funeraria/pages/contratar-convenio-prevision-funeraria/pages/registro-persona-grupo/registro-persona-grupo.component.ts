@@ -1,18 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { OverlayPanel } from 'primeng/overlaypanel';
-import { ModalRegistrarBeneficiarioComponent } from './components/modal-registrar-beneficiario/modal-registrar-beneficiario.component';
+import { ModalEditarBeneficiarioComponent } from '../../components/modal-editar-beneficiario/modal-editar-beneficiario.component';
+import { ModalDesactivarBeneficiarioComponent } from '../../components/modal-desactivar-beneficiario/modal-desactivar-beneficiario.component';
+import { ModalRegistrarBeneficiarioComponent } from '../../components/modal-registrar-beneficiario/modal-registrar-beneficiario.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DialogService } from 'primeng/dynamicdialog';
-import { ModalEditarBeneficiarioComponent } from './components/modal-editar-beneficiario/modal-editar-beneficiario.component';
+import { OverlayPanel } from 'primeng/overlaypanel';
 import { DIEZ_ELEMENTOS_POR_PAGINA } from 'src/app/utils/constantes';
-import { ModalDesactivarBeneficiarioComponent } from './components/modal-desactivar-beneficiario/modal-desactivar-beneficiario.component';
 
 @Component({
-  selector: 'app-contratar-convenio-prevision-funeraria',
-  templateUrl: './contratar-convenio-prevision-funeraria.component.html',
-  styleUrls: ['./contratar-convenio-prevision-funeraria.component.scss'],
+  selector: 'app-registro-persona-grupo',
+  templateUrl: './registro-persona-grupo.component.html',
+  styleUrls: ['./registro-persona-grupo.component.scss']
 })
-export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
+export class RegistroPersonaGrupoComponent implements OnInit {
+
   form!: FormGroup;
 
   dummyDropdown: { label: string; value: number }[] = [
@@ -22,11 +23,8 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
 
   fechaActual: Date = new Date();
 
-  @ViewChild('overlayPanel')
+  @ViewChild(OverlayPanel)
   overlayPanel!: OverlayPanel;
-
-  @ViewChild('overlayPanelGrupo')
-  overlayPanelGrupo!: OverlayPanel;
 
   beneficiarios: any[] = [
     {
@@ -73,85 +71,12 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     },
   ];
 
-  personasGrupo: any[] = [
-    {
-      id: 1,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 2,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 3,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 4,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 5,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 6,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 7,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-  ];
-
-
-  numPaginaActual: number = 0;
-  cantElementosPorPagina: number = DIEZ_ELEMENTOS_POR_PAGINA;
-  totalElementos: number = this.personasGrupo.length;
-
-
+  
   mostrarModalTipoArchivoIncorrecto: boolean = false;
   mostrarModalConfirmacionInformacionCapturada: boolean = false;
   mostrarModalValidacionRegistro: boolean = false;
-  mostrarModalDesactivarBeneficiarioGrupo:boolean = false;
 
   TIPO_CONTRATACION_PERSONA: string = 'persona';
-  TIPO_CONTRATACION_GRUPO: string = 'grupo';
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -164,13 +89,6 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
 
   crearForm(): FormGroup {
     return this.formBuilder.group({
-      tipoContratacion: [
-        {
-          value: this.TIPO_CONTRATACION_PERSONA,
-          disabled: false,
-        },
-        [Validators.nullValidator],
-      ],
       datosPersonales: this.formBuilder.group({
         matricula: [
           {
@@ -329,99 +247,7 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           [Validators.nullValidator],
         ],
       }),
-      datosGrupo: this.formBuilder.group({
-        nombre: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        razonSocial: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        rfc: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-        pais: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        codigoPostal: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        asentamientoColonia: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        municipio: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-        estado: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-        calle: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        numeroExterior: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        numeroInterior: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-        telefono: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        correoElectronico: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-      }),
+    
       paquetes: this.formBuilder.group({
         paqueteEconomico: [
           {
@@ -445,20 +271,6 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           [Validators.nullValidator],
         ],
       }),
-      gestionadoPorPromotor: [
-        {
-          value: null,
-          disabled: false,
-        },
-        [Validators.nullValidator],
-      ],
-      promotor: [
-        {
-          value: null,
-          disabled: false,
-        },
-        [Validators.nullValidator],
-      ],
     });
   }
 
@@ -543,10 +355,6 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     this.overlayPanel.toggle(event);
   }
 
-  abrirPanelGrupo(event: MouseEvent): void {
-    this.overlayPanelGrupo.toggle(event);
-  }
-
   get f() {
     return this.form.controls;
   }
@@ -559,7 +367,4 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     return (this.form.controls['domicilio'] as FormGroup).controls;
   }
 
-  get datosGrupo() {
-    return (this.form.controls['datosGrupo'] as FormGroup).controls;
-  }
 }

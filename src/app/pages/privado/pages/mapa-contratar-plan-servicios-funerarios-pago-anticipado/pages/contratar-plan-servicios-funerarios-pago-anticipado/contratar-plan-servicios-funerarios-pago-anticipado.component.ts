@@ -1,18 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { OverlayPanel } from 'primeng/overlaypanel';
-import { ModalRegistrarBeneficiarioComponent } from './components/modal-registrar-beneficiario/modal-registrar-beneficiario.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogService } from 'primeng/dynamicdialog';
-import { ModalEditarBeneficiarioComponent } from './components/modal-editar-beneficiario/modal-editar-beneficiario.component';
-import { DIEZ_ELEMENTOS_POR_PAGINA } from 'src/app/utils/constantes';
-import { ModalDesactivarBeneficiarioComponent } from './components/modal-desactivar-beneficiario/modal-desactivar-beneficiario.component';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { ModalEditarBeneficiarioComponent } from '../../../consulta-convenio-prevision-funeraria/pages/mi-convenio-prevision-funeraria/components/modal-editar-beneficiario/modal-editar-beneficiario.component';
+import { ModalDesactivarBeneficiarioComponent } from '../../../mapa-contratar-convenio-prevision-funeraria/pages/contratar-convenio-prevision-funeraria/components/modal-desactivar-beneficiario/modal-desactivar-beneficiario.component';
+import { ModalRegistrarBeneficiarioComponent } from '../../../mapa-contratar-convenio-prevision-funeraria/pages/contratar-convenio-prevision-funeraria/components/modal-registrar-beneficiario/modal-registrar-beneficiario.component';
 
 @Component({
-  selector: 'app-contratar-convenio-prevision-funeraria',
-  templateUrl: './contratar-convenio-prevision-funeraria.component.html',
-  styleUrls: ['./contratar-convenio-prevision-funeraria.component.scss'],
+  selector: 'app-contratar-plan-servicios-funerarios-pago-anticipado',
+  templateUrl:
+    './contratar-plan-servicios-funerarios-pago-anticipado.component.html',
+  styleUrls: [
+    './contratar-plan-servicios-funerarios-pago-anticipado.component.scss',
+  ],
 })
-export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
+export class ContratarPlanServiciosFunerariosPagoAnticipadoComponent
+  implements OnInit
+{
   form!: FormGroup;
 
   dummyDropdown: { label: string; value: number }[] = [
@@ -25,133 +29,62 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
   @ViewChild('overlayPanel')
   overlayPanel!: OverlayPanel;
 
-  @ViewChild('overlayPanelGrupo')
-  overlayPanelGrupo!: OverlayPanel;
-
-  beneficiarios: any[] = [
+  beneficiarios = [
     {
       id: 1,
-      fecha: '',
-      nombre: '',
-      primerApellido: '',
-      segundoApellido: '',
-      edad: '',
-      parentesco: '',
-      curp: '',
-      rfc: '',
-      actaNacimiento: '',
-      correoElectronico: '',
-      telefono: '',
+      curp: 'ABC123456DEF789XYZ',
+      rfc: 'RFC123456XYZ',
+      matricula: 'M12345',
+      nss: 'NSS987654',
+      nombre: 'Juan',
+      primerApellido: 'Pérez',
+      segundoApellido: 'Gómez',
+      sexo: 'Masculino',
+      fechaNacimiento: '1990-05-15',
+      nacionalidad: 'Mexicana',
+      paisNacimiento: 'México',
+      lugarNacimiento: 'Ciudad de México',
+      telefono: '555-123-4567',
+      correoElectronico: 'juan.perez@example.com',
+      calle: 'Calle Principal',
+      noExt: '123',
+      noInt: 'A',
+      cp: '12345',
+      colonia: 'Centro',
+      municipio: 'Ciudad',
+      estado: 'Estado de México',
     },
     {
       id: 2,
-      fecha: '',
-      nombre: '',
-      primerApellido: '',
-      segundoApellido: '',
-      edad: '',
-      parentesco: '',
-      curp: '',
-      rfc: '',
-      actaNacimiento: '',
-      correoElectronico: '',
-      telefono: '',
-    },
-    {
-      id: 3,
-      fecha: '',
-      nombre: '',
-      primerApellido: '',
-      segundoApellido: '',
-      edad: '',
-      parentesco: '',
-      curp: '',
-      rfc: '',
-      actaNacimiento: '',
-      correoElectronico: '',
-      telefono: '',
+      curp: 'XYZ987654ABC321PQR',
+      rfc: 'RFC789012PQR',
+      matricula: 'M54321',
+      nss: 'NSS123456',
+      nombre: 'María',
+      primerApellido: 'López',
+      segundoApellido: 'Martínez',
+      sexo: 'Femenino',
+      fechaNacimiento: '1985-10-20',
+      nacionalidad: 'Mexicana',
+      paisNacimiento: 'México',
+      lugarNacimiento: 'Guadalajara',
+      telefono: '555-789-1234',
+      correoElectronico: 'maria.lopez@example.com',
+      calle: 'Avenida Principal',
+      noExt: '567',
+      noInt: '',
+      cp: '54321',
+      colonia: 'Residencial',
+      municipio: 'Guadalajara',
+      estado: 'Jalisco',
     },
   ];
-
-  personasGrupo: any[] = [
-    {
-      id: 1,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 2,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 3,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 4,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 5,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 6,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-    {
-      id: 7,
-      matricula:'',
-      rfc:'',
-      curp:'',
-      nombre:'',
-      primerApellido:'',
-      segundoApellido:''
-    },
-  ];
-
-
-  numPaginaActual: number = 0;
-  cantElementosPorPagina: number = DIEZ_ELEMENTOS_POR_PAGINA;
-  totalElementos: number = this.personasGrupo.length;
-
 
   mostrarModalTipoArchivoIncorrecto: boolean = false;
   mostrarModalConfirmacionInformacionCapturada: boolean = false;
   mostrarModalValidacionRegistro: boolean = false;
-  mostrarModalDesactivarBeneficiarioGrupo:boolean = false;
-
+  mostrarModalDesactivarBeneficiarioGrupo: boolean = false;
   TIPO_CONTRATACION_PERSONA: string = 'persona';
-  TIPO_CONTRATACION_GRUPO: string = 'grupo';
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -172,12 +105,12 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
         [Validators.nullValidator],
       ],
       datosPersonales: this.formBuilder.group({
-        matricula: [
+        curp: [
           {
             value: null,
             disabled: false,
           },
-          [Validators.nullValidator],
+          [Validators.required],
         ],
         rfc: [
           {
@@ -186,13 +119,14 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.nullValidator],
         ],
-        curp: [
+        matricula: [
           {
             value: null,
             disabled: false,
           },
-          [Validators.required],
+          [Validators.nullValidator],
         ],
+
         nombre: [
           {
             value: null,
@@ -228,6 +162,27 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.nullValidator],
         ],
+        fechaNacimiento: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        nacionalidad: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.nullValidator],
+        ],
+        paisNacimiento: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
         lugarNacimiento: [
           {
             value: null,
@@ -235,7 +190,21 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.required],
         ],
-        fechaNacimiento: [
+        telefonoCelular: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        telefonoFijo: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        correoElectronico: [
           {
             value: null,
             disabled: false,
@@ -244,6 +213,27 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
         ],
       }),
       domicilio: this.formBuilder.group({
+        calle: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        numeroExterior: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        numeroInterior: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.nullValidator],
+        ],
         codigoPostal: [
           {
             value: null,
@@ -272,72 +262,16 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.required],
         ],
-        pais: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        calle: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-        numeroExterior: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        numeroInterior: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-        correoElectronico: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        telefono: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        enfermedadPrexistente: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
-        otro: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.nullValidator],
-        ],
       }),
-      datosGrupo: this.formBuilder.group({
-        nombre: [
+      datosPersonalesTitularSubstituto: this.formBuilder.group({
+        sonDatosTitular: [
           {
             value: null,
             disabled: false,
           },
-          [Validators.required],
+          [Validators.nullValidator],
         ],
-        razonSocial: [
+        curp: [
           {
             value: null,
             disabled: false,
@@ -351,41 +285,100 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.nullValidator],
         ],
-        pais: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        codigoPostal: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        asentamientoColonia: [
-          {
-            value: null,
-            disabled: false,
-          },
-          [Validators.required],
-        ],
-        municipio: [
+        matricula: [
           {
             value: null,
             disabled: false,
           },
           [Validators.nullValidator],
         ],
-        estado: [
+
+        nombre: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        primerApellido: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        segundoApellido: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        sexo: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        otro: [
           {
             value: null,
             disabled: false,
           },
           [Validators.nullValidator],
         ],
+        fechaNacimiento: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        nacionalidad: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.nullValidator],
+        ],
+        paisNacimiento: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        lugarNacimiento: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        telefonoCelular: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        telefonoFijo: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        correoElectronico: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+      }),
+      domicilioTitularSubstituto: this.formBuilder.group({
         calle: [
           {
             value: null,
@@ -407,19 +400,33 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.nullValidator],
         ],
-        telefono: [
+        codigoPostal: [
           {
             value: null,
             disabled: false,
           },
           [Validators.required],
         ],
-        correoElectronico: [
+        asentamientoColonia: [
           {
             value: null,
             disabled: false,
           },
-          [Validators.nullValidator],
+          [Validators.required],
+        ],
+        municipio: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
+        ],
+        estado: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.required],
         ],
       }),
       paquetes: this.formBuilder.group({
@@ -444,7 +451,15 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
           },
           [Validators.nullValidator],
         ],
+        numeroPago: [
+          {
+            value: null,
+            disabled: false,
+          },
+          [Validators.nullValidator],
+        ],
       }),
+
       gestionadoPorPromotor: [
         {
           value: null,
@@ -543,10 +558,6 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     this.overlayPanel.toggle(event);
   }
 
-  abrirPanelGrupo(event: MouseEvent): void {
-    this.overlayPanelGrupo.toggle(event);
-  }
-
   get f() {
     return this.form.controls;
   }
@@ -559,7 +570,17 @@ export class ContratarConvenioPrevisionFunerariaComponent implements OnInit {
     return (this.form.controls['domicilio'] as FormGroup).controls;
   }
 
-  get datosGrupo() {
-    return (this.form.controls['datosGrupo'] as FormGroup).controls;
+  get paquetes() {
+    return (this.form.controls['paquetes'] as FormGroup).controls;
+  }
+
+  get datosPersonalesTitularSubstituto() {
+    return (this.form.controls['datosPersonalesTitularSubstituto'] as FormGroup)
+      .controls;
+  }
+
+  get domicilioTitularSubstituto() {
+    return (this.form.controls['domicilioTitularSubstituto'] as FormGroup)
+      .controls;
   }
 }

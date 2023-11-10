@@ -52,8 +52,16 @@ const routes: Routes = [
             './pages/mapa-contratar-convenio-prevision-funeraria/mapa-contratar-convenio-prevision-funeraria.module'
           ).then((m) => m.MapaContratarConvenioPrevisionFunerariaModule),
       },
+      {
+        path: 'contratar-plan-de-servicios-funerarios-pago-anticipado',
+        loadChildren: () =>
+          import(
+            './pages/mapa-contratar-plan-servicios-funerarios-pago-anticipado/mapa-contratar-plan-servicios-funerarios-pago-anticipado.module'
+          ).then((m) => m.MapaContratarPlanServiciosFunerariosPagoAnticipadoModule),
+      },
     ],
   },
+
 ];
 
 @NgModule({
